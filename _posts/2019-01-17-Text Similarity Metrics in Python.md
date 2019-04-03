@@ -28,12 +28,14 @@ Difflib.SequenceMatcher is a flexible class for comparing pairs of sequences of 
 
 SequenceMatcher’s structure as below:
 class difflib.SequenceMatcher(isjunk=None, a='', b='', autojunk=True). E.g.:
-*from difflib import SequenceMatcher
-s1 = “abcd”
-s2 = “bcdf”
-seq = SequenceMatcher(None, s1, s2)
-ratio = seq.ratio()
-print(ratio)*
+```python
+    from difflib import SequenceMatcher
+    s1 = "abcd"
+    s2 = "bcdf"
+    seq = SequenceMatcher(None, s1, s2)
+    ratio = seq.ratio()
+    print(ratio)
+```
 
 The first parameter ‘isjunk’ should be ‘None’ (as default) or a function towards one of the parameters. For example, 
 
@@ -44,12 +46,12 @@ According to the ratio, it will return the sequences' similarity as a float in t
 *Ratio = 2.0*M / T
 Where T denotes the total number of elements in both sequences, and M is the number of matches. Also, if we’d like to keep the decimal part as we wanted, then it can be changed to (with the above example):*
 ```python
-    <p>from difflib import SequenceMatcher
-    s1 = “abcd”
-    s2 = “bcdf”
+    from difflib import SequenceMatcher
+    s1 = "abcd"
+    s2 = "bcdf"
     seq = SequenceMatcher(None, s1, s2)
     ratio = round(seq.ratio(),8)
-    print(ratio)</p>
+    print(ratio)
 ```
 
 Generally, SequenceMatcher() is a very simple but with high confidence rating for the sentence/words similarity.
@@ -58,7 +60,26 @@ Generally, SequenceMatcher() is a very simple but with high confidence rating fo
 
 Jaccard Index, from the Wikipedia, is known as Jaccard similarity coefficient, which is defined as the size of intersection divided by size of union of two sets. 
 The result will be ‘1’ when the two sets are same.
+```python
+    from sklearn.feature_extraction.text import CountVectorizer
+    import numpy as np
+    def jaccard_similarity(s1, s2):
+        def add_space(s):
+            return ' '.join(list(s))
+        s1, s2 = add_space(s1), add_space(s2)
 
+        cv = CountVectorizer(tokenizer=lambda s: s.split())
+        corpus = [s1, s2]
+        vectors = cv.fit_transform(corpus).toarray()
+        numerator = np.sum(np.min(vectors, axis=0))
+        denominator = np.sum(np.max(vectors, axis=0))
+        return 1.0 * numerator / denominator
+ 
+ 
+    s1 = "abcd"
+    s2 = "bcdf"
+    print(jaccard_similarity(s1, s2))
+``` 
 
 In this case, firstly we use the ‘CountVectorizer’  in the ‘Sklearn’ library to calculate the TF metrics, then calculate the intersection and union in terms of ‘Numpy’ library and thereby get the Jaccard Index. 
 
