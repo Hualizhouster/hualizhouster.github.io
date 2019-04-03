@@ -35,18 +35,22 @@ seq = SequenceMatcher(None, s1, s2)
 ratio = seq.ratio()
 print(ratio)*
 
-The first parameter ‘isjunk’ should be ‘None’ (as default) or a function towards one of the parameters. For example,  
+The first parameter ‘isjunk’ should be ‘None’ (as default) or a function towards one of the parameters. For example, 
+
 *seq = SequenceMatcher(lambda x: x == “ “, s1, s2) means the blank spaces will be considered as isjunk, or sometimes we can use it to verify some specific strings, like: seq = SequenceMatcher(lambda x: x in “**“, s1, s2)*
 
 According to the ratio, it will return the sequences' similarity as a float in the range [0, 1]. In principle, the formula for ratio can be defined as:
-Ratio = 2.0*M / T
-Where T denotes the total number of elements in both sequences, and M is the number of matches. Also, if we’d like to keep the decimal part as we wanted, then it can be changed to (with the above example):
-from difflib import SequenceMatcher
+
+*Ratio = 2.0*M / T
+Where T denotes the total number of elements in both sequences, and M is the number of matches. Also, if we’d like to keep the decimal part as we wanted, then it can be changed to (with the above example):*
+···
+<p>from difflib import SequenceMatcher
 s1 = “abcd”
 s2 = “bcdf”
 seq = SequenceMatcher(None, s1, s2)
 ratio = round(seq.ratio(),8)
-print(ratio)
+print(ratio)</p>
+···
 
 Generally, SequenceMatcher() is a very simple but with high confidence rating for the sentence/words similarity.
 
@@ -54,6 +58,12 @@ Generally, SequenceMatcher() is a very simple but with high confidence rating fo
 
 Jaccard Index, from the Wikipedia, is known as Jaccard similarity coefficient, which is defined as the size of intersection divided by size of union of two sets. 
 The result will be ‘1’ when the two sets are same.
+
+
+In this case, firstly we use the ‘CountVectorizer’  in the ‘Sklearn’ library to calculate the TF metrics, then calculate the intersection and union in terms of ‘Numpy’ library and thereby get the Jaccard Index. 
+
+According to my practice, Jaccard similarity with better performance than TF and TFIDF metrics, that will be introduced in future.
+
 
 
 
