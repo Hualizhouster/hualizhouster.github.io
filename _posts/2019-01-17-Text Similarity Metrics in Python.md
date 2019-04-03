@@ -43,14 +43,14 @@ According to the ratio, it will return the sequences' similarity as a float in t
 
 *Ratio = 2.0*M / T
 Where T denotes the total number of elements in both sequences, and M is the number of matches. Also, if we’d like to keep the decimal part as we wanted, then it can be changed to (with the above example):*
-···
-<p>from difflib import SequenceMatcher
-s1 = “abcd”
-s2 = “bcdf”
-seq = SequenceMatcher(None, s1, s2)
-ratio = round(seq.ratio(),8)
-print(ratio)</p>
-···
+```python
+    <p>from difflib import SequenceMatcher
+    s1 = “abcd”
+    s2 = “bcdf”
+    seq = SequenceMatcher(None, s1, s2)
+    ratio = round(seq.ratio(),8)
+    print(ratio)</p>
+```
 
 Generally, SequenceMatcher() is a very simple but with high confidence rating for the sentence/words similarity.
 
