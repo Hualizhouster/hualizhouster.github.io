@@ -12,27 +12,17 @@ tags:                               #标签
 
 ## Background
 The social media is changing our world. The Ads really have tricks to be put in the social media like Facebook or Tweeter. From the artificial intelligence (AI) perspective, the advertiser definitely needs more support from data science team, helping them analysing the insights behind the postings. For instance:
+- How similar are these two words?
+- How similar are these two sentences?
+- How similar are these two documents?
 
+These above questions I mentioned can be solved in terms of the popular natural language processing (NLP). In this blog, we will present some general algorithms for sentence/words similarity. Normally, it will be displayed with examples in Python.
 
-During my master study, I spent nearly 1 year on the research of Recommender Systems(RSs). Based on the current industry research, I proposed 2 papers related to Context-Aware Recommender System (CARS), in terms of two different modeling. We'll focus on this topic to share my understandings for RSs and CARS from academic and practice. With my background in Machine Learning, I'll explain the working of RSs using example and practice.
-
-In this article, we will learn about the traditional RSs and relevant algrithms, creating them in Python from scratch. We will also introduce the evaluation matrics approaches, and finally we will build a recommendation engine/system using matrix factorization.
+In this article, we will introduce some simple but useful algorithms for similarity calculation as follows:
 
 **Contents**
-- What are recommendation engines?
-- How does a recommendation engine work?
-   1. Data collection
-   2. Data storage
-   3. Filtering the data
-       1. Content based filtering
-       2. Collaborative filtering
-- Case study in Python using the MovieLens dataset
-- Building collaborative filtering model from scratch
-- Building Simple popularity and collaborative filtering model using Turicreate
-- Introduction to matrix factorization
-- Building a recommendation engine using matrix factorization
-- Evaluation metrics for recommendation engines
-   1. Recall
-   2. Precision
+- SequenceMatcher function
+- Jaccard Index
+
 
 
