@@ -40,3 +40,27 @@ As a Python 2D plotting library, Matplotlib provides a MATLAB-like interface. He
 ```
 
 ![Alt text](https://oi1126.photobucket.com/albums/l608/zhl/passenger%20info_01_zpsdu1y1xyh.jpg)
+
+
+```python
+    import matplotlib.pyplot as plt
+    fig = plt.figure(figsize=(15, 4))
+    fig.set() 
+
+    plt.subplot2grid((1,3),(0,0),colspan=2)                ## means 2 images in total, and the first one takes 2 spaces
+    data_train.Age[data_train.Pclass==1].plot(kind='kde')
+    data_train.Age[data_train.Pclass==2].plot(kind='kde')
+    data_train.Age[data_train.Pclass==3].plot(kind='kde')
+    plt.xlabel("Age",size=15)
+    plt.ylabel("Density",size=15)
+    plt.title("Age distribtion in each Class",size=15)
+    plt.legend(("P1","P2","P3"),loc='best')
+
+    plt.subplot2grid((1,3),(0,2))
+    data_train.Embarked.value_counts().plot(kind='bar')
+    plt.ylabel("Number",size=15)
+    plt.title("The number in each Embarkation",size=15)
+    plt.grid(b=True)
+```
+
+![Alt text](https://oi1126.photobucket.com/albums/l608/zhl/passenger%20info_02_zps6gn6jfsx.jpg)
