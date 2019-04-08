@@ -12,6 +12,7 @@ tags:                               #标签
 
 As a Python 2D plotting library, Matplotlib provides a MATLAB-like interface. Here we will show some basic plottings in terms of the popular 'pyplot' library. Take the Titanic dataset as example, 
 
+### subplot2grid ###
 ```python
     import matplotlib.pyplot as plt
 
