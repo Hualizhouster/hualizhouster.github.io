@@ -1,6 +1,6 @@
 ---
 layout:     post                    # 使用的布局（不需要改）
-title:      Matplotlib for Data Visualizations              # 标题 
+title:      Python Libraries for Data Visualization            # 标题 
 subtitle:     #副标题
 date:       2019-03-08              # 时间
 author:     Sandy                      # 作者
@@ -12,7 +12,7 @@ tags:                               #标签
 
 As a Python 2D plotting library, Matplotlib provides a MATLAB-like interface. Here we will show some basic plottings in terms of the popular 'pyplot' library. Take the Titanic dataset as example, 
 
-### subplot2grid ###
+### Matplotlib ###
 ```python
     import matplotlib.pyplot as plt
 
@@ -64,3 +64,16 @@ As a Python 2D plotting library, Matplotlib provides a MATLAB-like interface. He
 ```
 
 ![Alt text](https://oi1126.photobucket.com/albums/l608/zhl/passenger%20info_02_zps6gn6jfsx.jpg)
+
+
+### Seaborn ###
+
+Matplotlib is the basic library for visualizing what you want, and Seaborn is the advanced application for visualizations. Like this:
+
+```python
+    import seaborn as sns                  ## import the library
+
+    sns.violinplot(x='Sex', y='Age', hue='Survived',data=data_train,split=True)  ## more simple than matplotlib
+```
+
+![Alt text](https://oi1126.photobucket.com/albums/l608/zhl/passenger%20info_03_zpss69kmhqv.jpg)
