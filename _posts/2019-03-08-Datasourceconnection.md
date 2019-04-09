@@ -9,3 +9,10 @@ catalog: true                       # 是否归档
 tags:                               #标签
     - Python
 ---
+
+
+In the Python world, it provides several approaches for connecting data sources, like **.xlsx**, **.csv**, **txt**, or **database**. Today we will show some regular connecting methods with scripts.
+
+- Connecting MS SQL Database
+
+Based on research, **Pymssql and Pyhon 
