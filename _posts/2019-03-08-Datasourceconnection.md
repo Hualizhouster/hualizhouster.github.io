@@ -15,4 +15,4 @@ In the Python world, it provides several approaches for connecting data sources,
 
 - Connecting MS SQL Database
 
-Based on research, **Pymssql and Pyhon 
+Based on research, **Pymssql and Pyhon ODBC** are the basic solutions for connecting to MS SQL Server database. Here we will skip the library and the driver installations what you can find from Microsoft Offical website. 
