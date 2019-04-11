@@ -13,6 +13,11 @@ tags:                               #标签
 
 In the Python world, it provides several approaches for connecting data sources, like **.xlsx**, **.csv**, **txt**, or **database**. Today we will show some regular connecting methods with scripts.
 
-- Connecting MS SQL Database
+### Connecting MS SQL Database ###
 
-Based on research, **Pymssql and Pyhon ODBC** are the basic solutions for connecting to MS SQL Server database. Here we will skip the library and the driver installations what you can find from Microsoft Offical website. 
+Based on research, **Pymssql and Pyhon ODBC** are the basic solutions for connecting to MS SQL Server database. Here we will skip the library and the driver installations, including how to set up your Python environment in VScode, what you can find from Microsoft Offical website. 
+
+- Pymssql Connecting SQL Server
+
+
+
