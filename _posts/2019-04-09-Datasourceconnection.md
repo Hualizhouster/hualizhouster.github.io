@@ -1,6 +1,6 @@
 ---
 layout:     post                    # 使用的布局（不需要改）
-title:      Retrieving Data From Various Data Sources (01)           # 标题 
+title:      Retrieving Data From Various Data Sources           # 标题 
 subtitle:     #副标题
 date:       2019-04-09              # 时间
 author:     Sandy                      # 作者
@@ -66,6 +66,26 @@ In this method, the executing results will be presented in terms of **List**, th
 ```
 **Reminder:** Close the connection after each execution or will affect the performance of the database. 
 
+- Retrieving Data From Excel / CSV To DataFrame 
 
+Similarly, we can read data from Excel / CSV under the 'Pandas' library. Like this:
 
+```python
+    import pandas as pd
+    import numpy as np
+
+    df_retailer = pd.read_excel('test.xlsx', index = True, heading = True)
+    df_retailer.head()
+```
+or
+
+```python
+    import pandas as pd
+    import numpy as np
+    df_retailer_PLU = pd.read_excel('/Users/Sandy/Desktop/retailer_PLU1.xlsx', 
+                                index = True, heading = True)
+    df_retailer_PLU.head()
+```
+
+We can keep the attributes like 'index' and 'heading' or ignore it. Remember for Windows environment, we need to change the **\**  to  **/**, like this: */Users/Sandy/Desktop/retailer_PLU1.xlsx*
 
