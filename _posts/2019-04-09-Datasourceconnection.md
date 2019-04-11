@@ -19,7 +19,7 @@ Based on research, **Pymssql and Pyhon ODBC** are the basic solutions for connec
 
 As the Pyodbc is a similar library with Pymssql, so we just provide an example of **Pymssql Connecting SQL Server**:
 
-**Step 1**: Connect to the server and database, including server name, user info like ID and PW, and the specific database you want to connect. Particularly, for the server info, we can connect it via IP or Server Name. Normally, port number is optional when as default, or need to add the port number to connect as well. 
+**Step 1**: Connect to the server and database, including server name, user info like ID and PW, and the specific database you want to connect. Particularly, for the server info, we can connect it via IP or Server Name. Normally, port number is optional when as default (1433), or need to add the port number to connect as well. 
 
 **Step 2**: A connection can have only one cursor with an active query at any time. That means, for each connection, can have a query in progress, so multiple connections can execute multiple conccurent queries, and the fetchall() method of the cursor to recover all the results.
 
@@ -87,5 +87,5 @@ or
     df_retailer_PLU.head()
 ```
 
-We can keep the attributes like 'index' and 'heading' or ignore it. Remember for Windows environment, we need to change the **\**  to  **/**, like this: */Users/Sandy/Desktop/retailer_PLU1.xlsx*
+We can keep the attributes like 'index' and 'heading' or ignore it. Remember for Windows environment, we need to change the '\'  to  '/', like this: */Users/Sandy/Desktop/retailer_PLU1.xlsx*
 
