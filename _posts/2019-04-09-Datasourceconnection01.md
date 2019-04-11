@@ -13,7 +13,7 @@ tags:                               #标签
 
 In the Python world, it provides several approaches for connecting data sources, like **.xlsx**, **.csv**, **txt**, or **database** for data retrieving services. Today we will show some regular connecting methods with scripts.
 
-- MS SQL Server for Retrieving Data  
+- MS SQL Server for Retrieving Data To List 
 
 Based on research, **Pymssql and Pyhon ODBC** are the basic solutions for connecting to MS SQL Server database. Here we will skip the library and the driver installations, including how to set up your Python environment in VScode, what you can find from Microsoft Offical website. 
 
@@ -46,6 +46,9 @@ As the Pyodbc is a similar library with Pymssql, so we just provide an example o
     c2_list = cursor2.fetchall()
     conn.close()
 ```
+
+- MS SQL Server for Retrieving Data To DataFrame 
+
 In this method, the executing results will be presented in terms of **List**, the next we will connect to the database and query the results in terms of Dataframe in Pandas.
 
 ```python
