@@ -87,5 +87,5 @@ or
     df_retailer_PLU.head()
 ```
 
-We can keep the attributes like 'index' and 'heading' or ignore it. Remember for Windows environment, we need to change the "\"  to  "/", like this: */Users/Sandy/Desktop/retailer_PLU1.xlsx*
+We can keep the attributes like 'index' and 'heading' or ignore it. Remember for Windows environment, we need to change the "C:\Users\sandy\Downloads\latex images" to  "/", like this: */Users/Sandy/Desktop/retailer_PLU1.xlsx*
 
