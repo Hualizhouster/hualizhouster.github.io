@@ -43,3 +43,17 @@ Access modes refers to how the file will be used once its opened. These modes al
                                       + df_supplier['Product Name'][j] + ';' + str(ratio) + '\n')
 
 ```
+
+- Output / Write to Database (SQL Server as example)
+
+```python
+## Define a function 
+    def WriteDatatoDB(ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio):
+        conn = pymssql.connect(server = '192.168.42.110', user = 'sa', password = '38LRh430', database = 'test')
+        cursor = conn.cursor()
+        cursor.executemany("INSERT INTO dbo.MappingResult (ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio) VALUES (%d, %s, %d, %d, %s, %d, %s, %d, %s, %d)", 
+        [(ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio)])
+        #print(RetStoreID)
+        conn.commit()
+        conn.close()
+```
