@@ -12,7 +12,7 @@ tags:                               #标签
 
 
 
-## Python ## provides an inbuilt function for creating, writing and reading files.
+## Python provides an inbuilt function for creating, writing and reading files.
 
 | Mode | Function | Description |
 
