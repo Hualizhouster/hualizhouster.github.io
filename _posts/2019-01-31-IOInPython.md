@@ -46,14 +46,59 @@ Access modes refers to how the file will be used once its opened. These modes al
 
 - Output / Write to Database (SQL Server as example)
 
+**Step 1**: Ensure you already have a table in your aimed database, creating the table like this:
+
+```sql
+CREATE TABLE test.dbo.MappingResult (
+	ID int IDENTITY(1,1) NOT NULL,
+	ProductCode varchar(120) NULL,
+	RetProdName varchar(255) NULL,
+	RetailerGTIN nvarchar(200) NULL,
+	RetSupplierProductCode varchar(120) NULL,
+	RetSupplierName varchar(255) NULL,
+	SupSupplierProductCode varchar(120) NULL,
+	SupProdName varchar(255) NULL,
+	SupplierGTIN nvarchar(200) NULL,
+	SupplierName varchar(255) NULL,
+	Imagepath varchar(200) NULL,
+	Ratio float NULL,
+	Editor varchar(255) NULL,
+	cdate datetime DEFAULT getdate() NULL,
+	ApproveStatus bit NULL,
+	Reject bit NULL, 
+)
+```
+
+**Step 2**:  Define a connection to your table and database, choose *executemany* to insert the values to your database, like this:
+
 ```python
 ## Define a function 
     def WriteDatatoDB(ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio):
         conn = pymssql.connect(server = '192.168.42.110', user = 'sa', password = '38LRh430', database = 'test')
         cursor = conn.cursor()
         cursor.executemany("INSERT INTO dbo.MappingResult (ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio) VALUES (%d, %s, %d, %d, %s, %d, %s, %d, %s, %d)", 
-        [(ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio)])
-        #print(RetStoreID)
+        [(ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio)])    
         conn.commit()
         conn.close()
 ```
+
+**Step 3**: Write the execution results to your database.
+
+```python
+    for i in df_RetProd.index:
+        for j in df_SupProd.index:
+            ratio = round(SequenceMatcher(lambda x: x == " ", df_RetProd['NewName'][i], df_SupProd['NewSupProdName'][j]).ratio(),4)
+            if ratio >= 0.65:
+                if len(re.findall(r"\d+\.?\d*", df_RetProd['NewName'][i])) == len(re.findall(r"\d+\.?\d*",df_SupProd['SupProdName'][j])):
+                    if (operator.eq(re.findall(r"\d+\.?\d*", df_RetProd['NewName'][i]), re.findall(r"\d+\.?\d*", df_SupProd['SupProdName'][j])) == False):
+                        ratio = ratio * 0.7
+                    else:
+                        ratio = ratio
+                else:
+                    ration = ratio
+                WriteDatatoDB(str(df_RetProd['ProductCode'][i]), str(df_RetProd['RetProductName'][i]),
+                              str(df_RetProd['RetailerGTIN'][i]), str(df_RetProd['RetSupplierProductCode'][i]),
+                              str(df_RetProd['RetSupplierName'][i]),
+                              str(df_SupProd['SupSupplierProductCode'][j]), str(df_SupProd['SupProductName'][j]), 
+                              str(df_SupProd['SupplierGTIN'][j]), str(df_SupProd['SupplierName'][j]), str(ratio))
+ ```                         
