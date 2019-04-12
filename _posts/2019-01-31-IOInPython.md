@@ -11,7 +11,11 @@ tags:                               #标签
 ---
 
 
+
+## Python ## provides an inbuilt function for creating, writing and reading files.
+
 | Mode | Function | Description |
+
 | 'r' | Read Only | This is the default mode. It Opens file for reading. |
 | 'r+' | Read and Write | The handle is positioned at the beginning of the file. Raises I/O error if the file does not exists. |
 | 'w' | Write Only | For existing file, the data is truncated and over-written. The handle is positioned at the beginning of the file. Creates the file if the file does not exists. |
