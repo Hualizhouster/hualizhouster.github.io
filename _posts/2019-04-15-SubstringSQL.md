@@ -14,7 +14,7 @@ tags:                               #标签
 In this post, we will present some Syntax that used in SQL Server, like SUBSTRING, Len and other regular functions.
 
 **SUBSTRING(string, start, length)**, for each attribute:
->> String is *The string to extract from*;
-> Start is *the start position*;
-> Length is *The number of characters to extract*;
+1. String is *The string to extract from*;
+2. Start is *the start position*;
+3. Length is *The number of characters to extract*;
 
