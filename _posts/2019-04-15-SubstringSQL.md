@@ -18,7 +18,7 @@ In this post, we will present some Syntax that used in SQL Server, like SUBSTRIN
 2. Start is *the start position*;
 3. Length is *The number of characters to extract*;
 
-For example (can be found on Hackerrank): Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates. The query can be like this in SQL Server:
+First example(can be found on Hackerrank): Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates. The query can be like this in SQL Server:
 
 
 ```sql
@@ -27,3 +27,17 @@ WHERE LOWER(SUBSTRING(CITY, 1, 1)) IN ('a','e','i', 'o','u')
 
 ```
 
+Second example: Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot contain duplicates.
+
+In SQL Server,
+
+```sql
+SELECT DISTINCT CITY FROM STATION
+WHERE LOWER(SUBSTRING(CITY,LEN(CITY),1)) IN ('a','e','i','o','u')
+```
+In MySQL
+
+```sql
+SELECT DISTINCT CITY FROM STATION
+WHERE LOWER(SUBSTRING(CITY,-1,1)) IN ('a','e','i','o','u')
+```
