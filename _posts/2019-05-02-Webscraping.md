@@ -26,3 +26,5 @@ The contents will be included:
 - Limitations
 
 **Step 1: How to get an API key**
+
+1- Login to your Google Cloud Console [Google Cloud Console](https://console.cloud.google.com/ "Google Cloud Console"). 
