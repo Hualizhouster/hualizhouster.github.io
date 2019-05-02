@@ -1,7 +1,7 @@
 ---
 layout:     post                    # 使用的布局（不需要改）
-title:      Google Places API             # 标题 
-subtitle:   Extracting Place Data & Details with Python   #副标题
+title:      Extracting Place Data and Details From Google Place API            # 标题 
+subtitle:      #副标题
 date:       2019-05-02              # 时间
 author:     Sandy                      # 作者
 header-img: img/post-bg-2015.jpg    #这篇文章标题背景图片
