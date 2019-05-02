@@ -27,4 +27,6 @@ The contents will be included:
 
 **Step 1: How to get an API key**
 
-1- Login to your Google Cloud Console [Google Cloud Console](https://console.cloud.google.com/ "Google Cloud Console"). 
+It's free to apply for the Place API from Google, and will be provided \$300 for one year
+1- Login to your [Google Cloud Console](https://console.cloud.google.com/ "Google Cloud Console"). 
+2- From top navigation bar by clicking “Select a project”
