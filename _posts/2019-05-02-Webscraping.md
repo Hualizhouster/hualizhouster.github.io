@@ -24,3 +24,5 @@ The contents will be included:
 - Places details;
 - Retrieving results to database;
 - Limitations
+
+**Step 1: How to get an API key**
