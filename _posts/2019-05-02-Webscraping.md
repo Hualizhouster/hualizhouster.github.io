@@ -27,6 +27,31 @@ The contents will be included:
 
 **Step 1: How to get an API key**
 
-It's free to apply for the Place API from Google, and will be provided \$300 for one year
-1- Login to your [Google Cloud Console](https://console.cloud.google.com/ "Google Cloud Console"). 
-2- From top navigation bar by clicking “Select a project”
+It's free to apply for the Place API from Google, and will be provided \$300 for one year as a new account. Just follow the beloow isntructions to apply:
+
+1- Login to your [Google Cloud Console](https://console.cloud.google.com/ "Google Cloud Console"); 
+2- From top navigation bar by clicking 'Select a project';
+3- Open 'New project' and create a new one;
+4- From left side navigation to 'APIs & Services > Library > Place API';
+5- Click on 'Enable' > 'Create Credentials' then get your API key;
+6- Ready to copy your key to whatever you want
+
+**Step 2: Build your Place Search Code**
+
+To get place details, firstly we need to search for the location and get the place IDs first. Google provides three approaches for place search: *Find Place, Nearby Search and Text Search*. We will take an example of 'Text Search' as follows:
+
+```python
+import requests
+import json
+
+r = requests.get('https://maps.googleapis.com/maps/api/place/textsearch/json?query=automotive+parts+nz&key='your API key'')
+response = r.text
+python_object = json.loads(response)
+dataList = python_object.get('results')
+length=len(dataList)  
+
+firstDataList = dataList[0:length]
+total_results = []
+for x in firstDataList:
+    print('ADDRESS: ' + x['formatted_address'] + ' ' + 'NAME: '+ x['name'])
+```
