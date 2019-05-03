@@ -44,14 +44,34 @@ To get place details, firstly we need to search for the location and get the pla
 import requests
 import json
 
-r = requests.get('https://maps.googleapis.com/maps/api/place/textsearch/json?query=automotive+parts+nz&key='your API key'')
+r = requests.get('https://maps.googleapis.com/maps/api/place/textsearch/json?query='text search'&key='your API key'')
 response = r.text
 python_object = json.loads(response)
 dataList = python_object.get('results')
-length=len(dataList)  
+length = len(dataList)  
 
 firstDataList = dataList[0:length]
 total_results = []
 for x in firstDataList:
     print('ADDRESS: ' + x['formatted_address'] + ' ' + 'NAME: '+ x['name'])
+```
+
+**Step 3: Get Place Details by Place ID**
+
+Google developers mentioned, *"Once you have a place_id from a Place Search, you can request more details about a particular establishment or point of interest by initiating a Place Details request"*, that means we can build another function in terms of place_id and Place Details request.
+
+
+```python
+r = requests.get('https://maps.googleapis.com/maps/api/place/textsearch/json?query='text search'&key='your API key'')
+response = r.text
+python_object = json.loads(response)
+dataList = python_object.get('results')
+length = len(dataList) 
+DataDetail = dataList[0:length]
+for x in DataDetail:
+     detailResponse=requests.get('https://maps.googleapis.com/maps/api/place/details/json?placeid={palceid}&fields=name,website,rating,formatted_phone_number&key=AIzaSyBgvmZCT3KuZxyztBknCjt7qql5qSfuZlQ'.format(palceid=x['place_id']))
+     detailInfo = detailResponse.text
+     detailInfoPython = json.loads(detailInfo)
+     datadetailList = detailInfoPython.get('result')
+     print(datadetailList)
 ```
