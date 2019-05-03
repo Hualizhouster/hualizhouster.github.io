@@ -79,7 +79,7 @@ for x in DataDetail:
      print(datadetailList)
 ```
 
-**Step 4: Retrieving results to SQL Server database **
+**Step 4: Retrieving results to SQL Server database**
 
 Once the Function for Place Search and Place Details finished, following we can decide to retrive the results as '.csv', '.txt' or to database as we mentioned in the previous post [Retrieving Data From Various Data Sources](https://hualizhouster.github.io/2019/04/09/Datasourceconnection/ "Retrieving Data From Various Data Sources").  
 
@@ -94,7 +94,7 @@ def adddatatoDB(keywords,name, address, phone_number, website, rating):
 ```
 
 
-**Final Step: Limitations and Completed Scripts **
+**Final Step: Limitations and Completed Scripts**
 
 Till now, we nearly complete the code for scraping the place info from Google Place API, WHILE there are some limitations to this API, that is to say, for each request, Google only returns a maximum of 60 results (see Google's answer). And These results are split into 20 results per page. If a request has more than 20 results, you’ll need to use the “next_page_token” method. Furthermore, if you need to request the next page of results, there is a short delay (nearly one second) before the token becomes valid.
 
