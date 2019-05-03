@@ -44,7 +44,8 @@ To get place details, firstly we need to search for the location and get the pla
 import requests
 import json
 
-r = requests.get('https://maps.googleapis.com/maps/api/place/textsearch/json?query='text search'&key='your API key'')
+URL = ('https://maps.googleapis.com/maps/api/place/textsearch/json?query='text search'&key='your API key'')
+r = requests.get(URL)
 response = r.text
 python_object = json.loads(response)
 dataList = python_object.get('results')
@@ -62,14 +63,16 @@ Google developers mentioned, *"Once you have a place_id from a Place Search, you
 
 
 ```python
-r = requests.get('https://maps.googleapis.com/maps/api/place/textsearch/json?query='text search'&key='your API key'')
+URL_maps = ('https://maps.googleapis.com/maps/api/place/textsearch/json?query='text search'&key='your API key'')
+r = requests.get(URL)
 response = r.text
 python_object = json.loads(response)
 dataList = python_object.get('results')
 length = len(dataList) 
 DataDetail = dataList[0:length]
 for x in DataDetail:
-     detailResponse=requests.get('https://maps.googleapis.com/maps/api/place/details/json?placeid={palceid}&fields=name,website,rating,formatted_phone_number&key=AIzaSyBgvmZCT3KuZxyztBknCjt7qql5qSfuZlQ'.format(palceid=x['place_id']))
+     URL_id = 'https://maps.googleapis.com/maps/api/place/details/json?placeid={palceid}&fields=name,website,rating,formatted_phone_number&key=AIzaSyBgvmZCT3KuZxyztBknCjt7qql5qSfuZlQ'.format(palceid=x['place_id'])
+     detailResponse=requests.get(URL_id)
      detailInfo = detailResponse.text
      detailInfoPython = json.loads(detailInfo)
      datadetailList = detailInfoPython.get('result')
