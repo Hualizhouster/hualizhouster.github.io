@@ -81,7 +81,7 @@ for x in DataDetail:
 
 **Step 4: Retrieving results to SQL Server database **
 
-Once the Function for Place Search and Place Details finished, following we can decide to retrive the results as '.csv', '.txt' or to database as we mentioned in the previous post [Retrieving Data From Various Data Sources](https://hualizhouster.github.io/2019/04/09/Datasourceconnection/"Retrieving Data From Various Data Sources").  
+Once the Function for Place Search and Place Details finished, following we can decide to retrive the results as '.csv', '.txt' or to database as we mentioned in the previous post [Retrieving Data From Various Data Sources](https://hualizhouster.github.io/2019/04/09/Datasourceconnection/ "Retrieving Data From Various Data Sources").  
 
 ```sql
 def adddatatoDB(keywords,name, address, phone_number, website, rating):
