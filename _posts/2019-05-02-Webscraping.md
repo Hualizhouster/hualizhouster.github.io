@@ -99,3 +99,72 @@ def adddatatoDB(keywords,name, address, phone_number, website, rating):
 Till now, we nearly complete the code for scraping the place info from Google Place API, WHILE there are some limitations to this API, that is to say, for each request, Google only returns a maximum of 60 results (see Google's answer). And These results are split into 20 results per page. If a request has more than 20 results, you’ll need to use the “next_page_token” method. Furthermore, if you need to request the next page of results, there is a short delay (nearly one second) before the token becomes valid.
 
 ![Alt text](https://i1126.photobucket.com/albums/l608/zhl/image_zpsjzzsaklg.png)
+
+
+Finally I will put the completed code for any coders who like it, and thanks for some ideas from [GoTrained Python](https://python.gotrained.com/ "GoTrained Python") and [GoFishDigital](https://gofishdigital.com/local-link-building-python-places-api/ "GoFishDigital").
+
+```python
+import requests
+import json
+import time
+import pymssql
+
+api_key = 'your API key' 
+fields2 ='name, website, rating, formatted_phone_number'
+total_results = []
+
+
+def adddatatoDB(keywords,name, address, phone_number, website, rating):
+    conn = pymssql.connect('server name', 'user name', 'password', 'database')
+    cursor = conn.cursor()
+    cursor.executemany("INSERT INTO automotive(keywords,name, address, phone_number, website, rating) VALUES (%s, %s, %s, %s,%s, %s)", 
+    [(keywords,name, address, phone_number,website, rating)])
+    conn.commit()
+    conn.close()       
+
+
+
+def get_details(place_id):
+    r = requests.get('https://maps.googleapis.com/maps/api/place/details/json?placeid={palceid}&fields={fields1}&key={key}'.format(palceid=place_id,fields1=fields2,key=api_key))
+    response = r.text
+    python_object = json.loads(response)
+    try:
+        place_details = python_object["result"]
+        if 'website' in place_details:
+            return (place_details['formatted_phone_number'],place_details['website'])
+        else:
+            return (place_details['formatted_phone_number'],"no website listed in API")
+    except:
+        print("error getting place details")
+     
+        
+def get_places(business_type, next_page):
+    URL = ('https://maps.googleapis.com/maps/api/place/textsearch/json?query='+ business_type + '&pagetoken=' + next_page + '&key='+ api_key)
+    r = requests.get(URL)
+    response = r.text
+    python_object = json.loads(response)
+    results = python_object['results']
+ 
+    for result in results:
+        place_id = result['place_id']
+        rating = str(result['rating'])
+        address = result['formatted_address'] 
+        name = result['name'] 
+        (phone_number,website) = get_details(place_id)
+        # company name, address, phone number, url, and rating
+        #total_results.append([name, address, phone_number, website, rating])
+        #print(total_results)
+        adddatatoDB(business_type, name, address, phone_number, website, rating)
+        
+    try:
+        next_page_token = python_object["next_page_token"]
+    except KeyError:
+         #no next page
+        return
+    
+    time.sleep(1)
+    get_places(business_type, next_page_token) 
+## your input info    
+get_places('automotive parts Irving Texas', '')
+```
+
