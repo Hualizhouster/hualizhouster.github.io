@@ -29,12 +29,12 @@ The contents will be included:
 
 It's free to apply for the Place API from Google, and will be provided \$300 for one year as a new account. Just follow the beloow isntructions to apply:
 
-1- Login to your [Google Cloud Console](https://console.cloud.google.com/ "Google Cloud Console"); 
-2- From top navigation bar by clicking 'Select a project';
-3- Open 'New project' and create a new one;
-4- From left side navigation to 'APIs & Services > Library > Place API';
-5- Click on 'Enable' > 'Create Credentials' then get your API key;
-6- Ready to copy your key to whatever you want
+- Login to your [Google Cloud Console](https://console.cloud.google.com/ "Google Cloud Console"); 
+- From top navigation bar by clicking 'Select a project';
+- Open 'New project' and create a new one;
+- From left side navigation to 'APIs & Services > Library > Place API';
+- Click on 'Enable' > 'Create Credentials' then get your API key;
+- Ready to copy your key to whatever you want
 
 **Step 2: Build your Place Search Code**
 
