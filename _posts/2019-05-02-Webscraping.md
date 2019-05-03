@@ -78,3 +78,17 @@ for x in DataDetail:
      datadetailList = detailInfoPython.get('result')
      print(datadetailList)
 ```
+
+**Step 4: Retrieving results to SQL Server database **
+
+Once the Function for Place Search and Place Details finished, following we can decide to retrive the results as '.csv', '.txt' or to database as we mentioned in the previous post [Retrieving Data From Various Data Sources](https://hualizhouster.github.io/2019/04/09/Datasourceconnection/"Retrieving Data From Various Data Sources").  
+
+```sql
+def adddatatoDB(keywords,name, address, phone_number, website, rating):
+    conn = pymssql.connect('server name', 'user name', 'password', 'database')
+    cursor = conn.cursor()
+    cursor.executemany("INSERT INTO automotive(keywords,name, address, phone_number, website, rating) VALUES (%s, %s, %s, %s,%s, %s)", 
+    [(keywords,name, address, phone_number,website, rating)])
+    conn.commit()
+    conn.close() 
+```
