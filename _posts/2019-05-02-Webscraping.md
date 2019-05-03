@@ -71,7 +71,7 @@ dataList = python_object.get('results')
 length = len(dataList) 
 DataDetail = dataList[0:length]
 for x in DataDetail:
-     URL_id = 'https://maps.googleapis.com/maps/api/place/details/json?placeid={palceid}&fields=name,website,rating,formatted_phone_number&key=AIzaSyBgvmZCT3KuZxyztBknCjt7qql5qSfuZlQ'.format(palceid=x['place_id'])
+     URL_id = 'https://maps.googleapis.com/maps/api/place/details/json?placeid={palceid}&fields=name,website,rating,formatted_phone_number&key='your API key''.format(palceid=x['place_id'])
      detailResponse=requests.get(URL_id)
      detailInfo = detailResponse.text
      detailInfoPython = json.loads(detailInfo)
