@@ -96,4 +96,6 @@ def adddatatoDB(keywords,name, address, phone_number, website, rating):
 
 **Final Step: Limitations and Completed Scripts **
 
-Till now, we nearly complete the code for scraping the place info from Google Place API, WHILE there are some limitations to this API, that is to say, for each request, Google only returns a maximum of 60 results. And These results are split into 20 results per page. If a request has more than 20 results, you’ll need to use the “next_page_token” method. Furthermore, if you need to request the next page of results, there is a short delay (nearly one second) before the token becomes valid.
+Till now, we nearly complete the code for scraping the place info from Google Place API, WHILE there are some limitations to this API, that is to say, for each request, Google only returns a maximum of 60 results (see Google's answer). And These results are split into 20 results per page. If a request has more than 20 results, you’ll need to use the “next_page_token” method. Furthermore, if you need to request the next page of results, there is a short delay (nearly one second) before the token becomes valid.
+
+![Alt text](https://i1126.photobucket.com/albums/l608/zhl/image_zpsjzzsaklg.png)
