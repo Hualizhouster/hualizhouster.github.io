@@ -74,7 +74,7 @@ CREATE TABLE test.dbo.MappingResult (
 ```python
 ## Define a function 
     def WriteDatatoDB(ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio):
-        conn = pymssql.connect(server = '192.168.42.110', user = 'sa', password = '38LRh430', database = 'test')
+        conn = pymssql.connect(server, user, password, database) ## input your db info
         cursor = conn.cursor()
         cursor.executemany("INSERT INTO dbo.MappingResult (ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio) VALUES (%d, %s, %d, %d, %s, %d, %s, %d, %s, %d)", 
         [(ProductCode, RetProdName, RetailerGTIN, RetSupplierProductCode, RetSupplierName, SupSupplierProductCode, SupProdName, SupplierGTIN, SupplierName, Ratio)])    
